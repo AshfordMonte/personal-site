@@ -37,9 +37,16 @@ p {
 
 .landing-page {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.landing-content {
+  flex: 1;
   display: grid;
   place-items: center;
-  padding: 2rem 0;
 }
 
 .hero {
@@ -59,6 +66,29 @@ h1 {
   margin: 0 auto;
   color: var(--muted);
   font-size: clamp(1.5rem, 2vw, 1.1rem);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  padding-top: 2rem;
+}
+
+.footer-link {
+  color: var(--muted);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.footer-link:hover {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.footer-link svg {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 @media (min-width: 700px) {
