@@ -1,0 +1,72 @@
+---
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const work = [
+  {
+    title: 'Network Dashboard',
+    description:
+      'Internal dashboard backed by Sonar GraphQL for operational visibility and customer-impact awareness.'
+  },
+  {
+    title: 'NetBox Import Tooling',
+    description:
+      'Scripts and data workflows for normalizing ISP site and inventory data into NetBox.'
+  },
+  {
+    title: 'Routing and BGP Documentation',
+    description:
+      'Operational documentation and routing policy work for upstream connectivity and network standardization.'
+  }
+];
+
+const focusAreas = [
+  'Routing and switching',
+  'Wireless ISP operations',
+  'Network visibility and monitoring',
+  'Automation and internal tooling',
+  'Source-of-truth and IPAM workflows',
+  'Infrastructure documentation'
+];
+---
+
+<Layout>
+  <main class="container">
+    <Hero />
+
+    <Section title="Selected Work" eyebrow="Proof of Work">
+      <div class="card-grid">
+        {work.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section title="Focus Areas" eyebrow="Technical Scope">
+      <ul class="tag-list">
+        {focusAreas.map((item) => <li>{item}</li>)}
+      </ul>
+    </Section>
+
+    <Section title="About" eyebrow="Background">
+      <p>
+        I work at the intersection of network operations and practical software. I am most interested
+        in building systems that improve visibility, reduce manual work, and make infrastructure easier
+        to operate at scale.
+      </p>
+    </Section>
+
+    <footer class="footer">
+      <p>San Marcos, Texas</p>
+      <div class="footer-links">
+        <a href="mailto:ashfordmonte@gmail.com">ashfordmonte@gmail.com</a>
+        <a href="https://github.com/AshfordMonte">GitHub</a>
+        <a href="https://www.linkedin.com/in/gage-ashford/">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+</Layout>
