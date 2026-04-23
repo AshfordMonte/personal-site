@@ -47,6 +47,7 @@ p {
   flex: 1;
   display: grid;
   place-items: center;
+  animation: fade-up 700ms ease-out both;
 }
 
 .hero {
@@ -65,7 +66,7 @@ h1 {
   width: min(100%, 24rem);
   margin: 0 auto;
   color: var(--muted);
-  font-size: clamp(1.5rem, 2vw, 1.1rem);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
 }
 
 .footer {
@@ -73,6 +74,7 @@ h1 {
   justify-content: center;
   gap: 1.25rem;
   padding-top: 2rem;
+  animation: fade-up 700ms ease-out 180ms both;
 }
 
 .footer-link {
@@ -89,6 +91,25 @@ h1 {
   display: block;
   width: 2.5rem;
   height: 2.5rem;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-content,
+  .footer {
+    animation: none;
+  }
 }
 
 @media (min-width: 700px) {
