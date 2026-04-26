@@ -1,0 +1,79 @@
+---
+import Layout from '../components/Layout.astro';
+import { getMusicData } from '../lib/spotify';
+
+const music = await getMusicData();
+---
+
+<Layout title="Music - Gage Ashford" description="Gage Ashford's top artists and tracks from Spotify.">
+  <main class="container page music-page">
+    <header class="page-header">
+      <h1>Music</h1>
+      <p><a class="home-word" href="/">My</a> top artists and tracks recently.</p>
+    </header>
+
+    {
+      music.configured ? (
+        <div class="music-sections">
+          <section class="music-section" aria-labelledby="top-artists">
+            <h2 id="top-artists">Top Artists</h2>
+            <ol class="music-list">
+              {music.artists.map((artist, index) => (
+                <li class="music-item">
+                  <span class="music-rank" aria-label={`Rank ${index + 1}`}>
+                    {index + 1}
+                  </span>
+                  <a class="music-link" href={artist.spotifyUrl}>
+                    {
+                      artist.imageUrl ? (
+                        <img src={artist.imageUrl} alt="" loading="lazy" />
+                      ) : (
+                        <span class="music-artwork" aria-hidden="true" />
+                      )
+                    }
+                    <span>{artist.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section class="music-section" aria-labelledby="top-tracks">
+            <h2 id="top-tracks">Top Tracks</h2>
+            <ol class="music-list">
+              {music.tracks.map((track, index) => (
+                <li class="music-item">
+                  <span class="music-rank" aria-label={`Rank ${index + 1}`}>
+                    {index + 1}
+                  </span>
+                  <a class="music-link" href={track.spotifyUrl}>
+                    {
+                      track.imageUrl ? (
+                        <img src={track.imageUrl} alt="" loading="lazy" />
+                      ) : (
+                        <span class="music-artwork" aria-hidden="true" />
+                      )
+                    }
+                    <span>
+                      <span class="track-name">{track.name}</span>
+                      <span class="track-artists">{track.artistNames}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+      ) : (
+        <section class="setup-note" aria-labelledby="spotify-setup">
+          <h2 id="spotify-setup">Spotify setup pending</h2>
+          <p>
+            Add <code>SPOTIFY_CLIENT_ID</code>, <code>SPOTIFY_CLIENT_SECRET</code>, and
+            <code>SPOTIFY_REFRESH_TOKEN</code> in Cloudflare Pages to publish live top artists and tracks
+            here.
+          </p>
+        </section>
+      )
+    }
+  </main>
+</Layout>

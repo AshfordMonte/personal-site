@@ -5,6 +5,7 @@
   --text: #f1f1f1;
   --muted: #c7cec8;
   --max-width: 42rem;
+  --wide-width: 68rem;
 }
 
 * {
@@ -26,8 +27,19 @@ body {
 }
 
 h1,
+h2,
 p {
   margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
 }
 
 .container {
@@ -63,7 +75,7 @@ h1 {
 }
 
 .hero-copy {
-  width: min(100%, 24rem);
+  width: min(100%, 32rem);
   margin: 0 auto;
   color: var(--muted);
   font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -79,6 +91,7 @@ h1 {
 
 .footer-link {
   color: var(--muted);
+  text-decoration: none;
   transition: color 0.15s ease, transform 0.15s ease;
 }
 
@@ -91,6 +104,117 @@ h1 {
   display: block;
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.page {
+  padding: 3rem 0 4rem;
+  animation: fade-up 700ms ease-out both;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  margin: 0.35rem 0 1rem;
+  font-size: clamp(3rem, 10vw, 5rem);
+}
+
+.page-header p {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+.home-word {
+  text-decoration: none;
+}
+
+.music-page {
+  width: min(100% - 2rem, var(--wide-width));
+}
+
+.music-sections {
+  display: grid;
+  gap: 3rem;
+}
+
+.music-section h2,
+.setup-note h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.music-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.music-item {
+  display: grid;
+  grid-template-columns: 2ch 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.music-rank {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.music-link {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.music-link:hover span:first-of-type {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.18em;
+}
+
+.music-link img,
+.music-artwork {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.music-link img {
+  object-fit: contain;
+}
+
+.music-link span {
+  overflow-wrap: anywhere;
+}
+
+.track-name,
+.track-artists {
+  display: block;
+  min-width: 0;
+}
+
+.track-artists,
+.setup-note {
+  color: var(--muted);
+}
+
+.setup-note {
+  padding: 1.25rem 0;
+}
+
+.setup-note code {
+  color: var(--text);
+  font-size: 0.95em;
 }
 
 @keyframes fade-up {
@@ -107,7 +231,8 @@ h1 {
 
 @media (prefers-reduced-motion: reduce) {
   .landing-content,
-  .footer {
+  .footer,
+  .page {
     animation: none;
   }
 }
@@ -115,5 +240,14 @@ h1 {
 @media (min-width: 700px) {
   .container {
     width: min(100% - 3rem, var(--max-width));
+  }
+
+  .music-page {
+    width: min(100% - 3rem, var(--wide-width));
+  }
+
+  .music-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
   }
 }
