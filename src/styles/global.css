@@ -62,7 +62,7 @@ a:hover {
   animation: fade-up 700ms ease-out both;
 }
 
-.hero {
+.intro {
   width: 100%;
   text-align: center;
 }
@@ -74,7 +74,7 @@ h1 {
   letter-spacing: -0.04em;
 }
 
-.hero-copy {
+.intro-copy {
   width: min(100%, 32rem);
   margin: 0 auto;
   color: var(--muted);
