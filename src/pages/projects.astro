@@ -1,0 +1,49 @@
+---
+import Layout from '../components/Layout.astro';
+
+const projects = [
+  {
+    name: 'Sonar Network Dashboard',
+    url: 'https://github.com/AshfordMonte/sonar-network-dashboard',
+    image: '/sonar-network-dashboard.png',
+    summary: 'A dashboard that ingests a Graphql API that sends ICMP polling data for infrastructure and customer premise equipment statuses.',
+    commentary: 'I made this dashboard to give our office staff a way to have a quick glance at how many customers may be experiencing an outage. The dashboard also allows me to drill into the specific device statuses and view: device/customer names, their IP addresses, and the network sites that they connect directly to.'
+  }
+];
+---
+
+<Layout title="Gage Ashford - Projects" description="GitHub projects and work by me.">
+  <main class="container page projects-page">
+    <header class="page-header">
+      <h1>Projects</h1>
+      <p>Some stuff <a class="home-word" href="/">I've</a> built.</p>
+    </header>
+
+    <section class="project-list" aria-label="GitHub projects">
+      {
+        projects.map((project) => (
+          <article class="project-feature">
+            <img class="project-preview" src={project.image} alt={`${project.name} preview`} loading="lazy" />
+            <div class="project-copy">
+              <div class="project-title-row">
+                <h2>{project.name}</h2>
+                <a class="project-github-link" href={project.url} aria-label={`${project.name} on GitHub`}>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M12 2C6.477 2 2 6.589 2 12.248c0 4.527 2.865 8.368 6.839 9.724.5.096.682-.222.682-.494 0-.245-.009-.894-.014-1.756-2.782.619-3.369-1.374-3.369-1.374-.455-1.179-1.11-1.494-1.11-1.494-.908-.636.069-.623.069-.623 1.004.073 1.532 1.054 1.532 1.054.892 1.565 2.341 1.113 2.91.851.091-.663.349-1.114.635-1.37-2.221-.259-4.556-1.137-4.556-5.06 0-1.118.39-2.032 1.029-2.749-.103-.259-.446-1.301.098-2.712 0 0 .84-.276 2.75 1.05A9.325 9.325 0 0 1 12 6.845c.85.004 1.706.118 2.504.346 1.909-1.326 2.748-1.05 2.748-1.05.546 1.411.202 2.453.1 2.712.64.717 1.028 1.631 1.028 2.749 0 3.933-2.339 4.798-4.566 5.052.359.319.679.949.679 1.914 0 1.381-.012 2.496-.012 2.835 0 .274.18.594.688.493C19.138 20.612 22 16.773 22 12.248 22 6.589 17.523 2 12 2Z"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <p>{project.summary}</p>
+              <div class="project-commentary">
+                <p>{project.commentary}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</Layout>
