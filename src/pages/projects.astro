@@ -7,7 +7,14 @@ const projects = [
     url: 'https://github.com/AshfordMonte/sonar-network-dashboard',
     image: '/sonar-network-dashboard.png',
     summary: 'A dashboard that ingests a Graphql API that sends ICMP polling data for infrastructure and customer premise equipment statuses.',
-    commentary: 'I made this dashboard to give our office staff a way to have a quick glance at how many customers may be experiencing an outage. The dashboard also allows me to drill into the specific device statuses and view: device/customer names, their IP addresses, and the network sites that they connect directly to.'
+    commentary: 'I made this dashboard to give our office staff a way to quickly glance at how many customers are experiencing an outage. The dashboard also allows me to drill into the device statuses and view the device/customer names, their IP addresses, and the network sites that they connect directly to.'
+  },
+  {
+    name: 'Daily Network Summary',
+    url: 'https://github.com/AshfordMonte/daily-network-summary',
+    image: '/daily-network-summary.png',
+    summary: 'A Node.js script that builds a daily network digest from filtered Graylog (Syslog) and Zabbix (SNMP) data, sends it to OpenAI, then posts the results in our Slack channel.',
+    commentary: 'I built this to give myself a quick morning summary of what happened on the network during off hours. It pulls together syslog events, reachability issues, device health, interface drops, and topology context so I can spot glaring problems before the day gets moving. Also using 3 separate APIs was kind of fun.'
   }
 ];
 ---
