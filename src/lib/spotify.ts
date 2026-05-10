@@ -143,7 +143,7 @@ function formatSpotifyError(
 
 async function getTopItems<T>(accessToken: string, type: 'artists' | 'tracks') {
   const params = new URLSearchParams({
-    time_range: 'medium_term',
+    time_range: 'short_term',
     limit: '10'
   });
   const response = await fetch(`https://api.spotify.com/v1/me/top/${type}?${params}`, {
